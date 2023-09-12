@@ -1,0 +1,264 @@
+{% assign BeaeBuilderMode = true %}
+                        {% if template contains '.' %}
+                            <input aria-label="input" type="hidden" name="view" value="{{template | split: '.' | last }}" />
+                        {% endif %}
+                        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                        {% assign color_option_name = 'Color' | handleize %}
+                        {% liquid
+                            assign colors = shop.metafields.beae.colors
+                        %}
+                        {% capture icon_caret%}
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                            </svg>
+                        {% endcapture%}
+                        {% capture close_icon %}
+                            <span class="beae-colletion-filters--close-icon beae-button-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="currentColor" viewBox="0 0 18 17">
+                                    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
+                                </svg>
+                            </span>
+                        {% endcapture %}
+                        <div class="beae-collection__filters-applied-block">
+                            
+                                <span class="beae-collection__filters-applied-heading">
+                                Applied filters
+                            </span>
+                            
+                            <div class="beae-collection-filters--active_values">
+                                <ul class="beae-collection-filters--active_values-list" role="list">
+                                    {% if BeaeBuilderMode != true  %}
+                                        {%- for filter in collection.filters -%}
+                                            {%- if filter.active_values.size > 0 -%}
+                                                {% for value in filter.active_values  %}
+                                                    <li class="beae-collection__filters-group-list-item">
+                                                        <a class="beae-collection__filters-group-list-item--selected" href="{{value.url_to_remove}}" title="{{value.label}}">{{ value.label | escape }} {{close_icon}}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else  %}
+                                        {% for filter in collection.filters %}
+                                            {% if filter.type == 'list' %}
+                                                {% for value in filter.values  %}
+                                                    <li class="beae-collection__filters-group-list-item">
+                                                        <a class="beae-collection__filters-group-list-item--selected" href="{{value.url_to_remove}}" title="{{value.label}}">{{ value.label | escape }} {{close_icon}}</a>
+                                                    </li>
+                                                {% endfor %}
+                                                {% break %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+
+                                    <li class="beae-collection__filters-group-list-item">
+                                        <a class="beae-collection__filters-group-list-item-remove-all" href="{{ collection.url }}" title="remove all">
+                                            Clear all
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="beae-container-filter-list">
+                        <div class="beae-collection__filters-overlay"></div>
+                        
+
+                        {%- for filter in collection.filters -%}
+                            {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+                            {% case filter.type %}
+                            {% when 'list' %}
+                                {% assign size = filter.values | size %}
+                                {% assign settings_size = undefined %}
+                                {%- if size > 0 -%}
+                                <details
+                                data-name="{{filter.param_name}}"
+                                class="
+                                    
+                                    beae-collection__filters-group-dropdown
+                                    beae-collection__filters-group beae-collection__filters-group-lists beae-d-none" data-index="{{ forloop.index }}" data-attrs-max="undefined">
+                                    <summary class="beae-collection__filters-group-summary">
+                                        <div class="beae-collection__filters-group-header">
+                                            <span class="beae-collection__filters-group-summary--title">{{ filter.label | escape }}</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 beae-icon-filter-color beae-icon-filter-close" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 beae-icon-filter-color beae-icon-filter-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </summary>
+                                    <div class="beae-collection__filters-group--display">
+                                        <div class="beae-collection__filters-group--header">
+                                            <span class="beae-collection__filters-group--selected no-js-hidden">
+                                                {% assign count = filter.active_values.size %}
+                                                {% if count == 1%}
+                                                    {{ count}} selected
+                                                {% else %}
+                                                    {{ count}} selected
+                                                {% endif %}
+                                            </span>
+                                            <a href="{{ filter.url_to_remove }}" class="beae-collection__filters-group-reset-filter" >Reset</a>
+                                        </div>
+                                        {% assign check_is_filter_color = false %}
+                                        
+                                        <ul class="beae-collection__filters-group-list {% if check_is_filter_color %} beae-collection__filters-enable-colors {% endif %}" data-param-name="{{filter.param_name}}" role="list">
+                                        {%- for value in filter.values -%}
+                                            {%- if false == false or value.count > 0 and false == true -%}
+                                            <li class="beae-collection__filters-group-list-item " >
+                                                <div for="beae-filter-{{ filter.label | escape  | strip }}-{{ forloop.index }}" class="beae-collection__filters-group-checkbox{% if value.count == 0 and value.active == false %} beae-collection__filters-group-checkbox--disabled{% endif %}">
+                                                    <input aria-label="input" type="checkbox"
+                                                    name="{{ value.param_name }}"
+                                                    value="{{ value.value }}"
+                                                    id="beae-filter-{{ filter.label | escape | strip }}-{{ forloop.index }}"
+                                                    {% if value.active %}checked{% endif %}
+                                                    {% if value.count == 0 and value.active == false %}disabled{% endif %}
+
+                                                    >
+                                                    <label
+                                                        for="beae-filter-{{ filter.label | escape | strip }}-{{ forloop.index }}"
+                                                        class="beae-collection__filters-group-checkbox-label">
+                                                        {% if check_is_filter_color %}
+                                                            {% assign value_key = value.value | downcase %}
+                                                            {% if colors and colors.value[value_key]  != blank %}
+                                                                <span class="beae-collection__filters--color" style="background-color:{{colors.value[value_key]}}" data-beae-tooltip="{{value.label}}"></span>
+                                                            {% else %}
+                                                                <span class="beae-collection__filters--color beae-collection__filters--no-color" data-beae-tooltip="{{value.label}}"></span>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            {{ value.label | escape }}
+                                                            <span class="beae-collection__filters--count">({{ value.count }})</span>
+                                                        {% endif %}
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            {%- endif -%}
+                                        {%- endfor -%}
+                                            
+                                        </ul>
+                                    </div>
+                                    </details>
+                                {%- endif -%}
+                            {% when 'price_range' %}
+                                {% liquid
+                                    assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+                                    assign uses_comma_decimals = false
+                                    if currencies_using_comma_decimals contains cart.currency.iso_code
+                                        assign uses_comma_decimals = true
+                                    endif
+                                    %}
+                                    <details
+                                    class="beae-collection__filters-group
+                                        
+                                        beae-collection__filters-group-dropdown beae-collection__filters-group-price-range" data-index="{{ forloop.index }}">
+                                        <summary class="beae-collection__filters-group-summary">
+                                            <div class="beae-collection__filters-group-header">
+                                                <span class="beae-collection__filters-group-summary--title">{{ filter.label | escape }}</span>
+                                                <span class="beae-collection__filters-group-count-bubble{%- if filter.min_value.value or filter.max_value.value -%}{{ filter.active_values.size }} count-bubble--dot{% endif %}"></span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 beae-icon-filter-color beae-icon-filter-close" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 beae-icon-filter-color beae-icon-filter-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </div>
+                                        </summary>
+                                        <div class="beae-collection__filters-group--display">
+                                            <div class="beae-collection__filters-group--header">
+                                                {%- assign max_price_amount = filter.range_max | money | escape -%}
+                                                <span class="beae-collection__filters-group--selected">Max price: {{max_price_amount}}</span>
+                                                <a href="{{ filter.url_to_remove }}" class="beae-collection__filters-group-reset-filter" >Reset</a>
+                                            </div>
+                                             <price-range class="beae-collection__filters-group-price">
+                                                    <div class="beae-collection__filters-group-field">
+                                                        <label class="beae-collection__filters-group-field--label" for="Search-In-Modal">From</label>
+                                                        <span class="beae-collection__filters-group-field--currency">{{ cart.currency.symbol }}</span>
+                                                        <input aria-label="input" class="beae-collection__filters-group-field--input beae-collection__filters-price-range-min"
+                                                        name="{{ filter.min_value.param_name }}"
+                                                        id="beae-filter-{{ filter.label | escape | strip  }}-{{ forloop.index }}"
+                                                        {%- if filter.min_value.value -%}
+                                                            {%- if uses_comma_decimals -%}
+                                                            value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                                                            {%- else -%}
+                                                            value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                            {% endif %}
+                                                        {%- endif -%}
+                                                        type="number"
+                                                        placeholder="0"
+                                                        min="0"
+                                                        {%- if uses_comma_decimals -%}
+                                                        max="{{ filter.range_max | money_without_currency| replace: '.', ''  | replace: ',', '.' }}"
+                                                        {%- else -%}
+                                                        max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                        {% endif %}
+                                                        
+                                                        >
+                                                        </input>
+                                                    </div>
+                                                    <div class="beae-collection__filters-group-field">
+                                                    <label class="beae-collection__filters-group-field--label" for="Search-In-Modal">To</label>
+                                                        <span class="beae-collection__filters-group-field--currency">{{ cart.currency.symbol }}</span>
+                                                        <input aria-label="input" class="beae-collection__filters-group-field--input beae-collection__filters-price-range-max"
+                                                        name="{{ filter.max_value.param_name }}"
+                                                        id="beae-Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                                                        {%- if filter.max_value.value -%}
+                                                            {%- if uses_comma_decimals -%}
+                                                            value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                                                            {%- else -%}
+                                                            value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                                                            {% endif %}
+                                                        {%- endif -%}
+                                                        type="number"
+                                                        {%- if uses_comma_decimals -%}
+                                                        placeholder="{{ filter.range_max | money_without_currency| replace: '.', ''  | replace: ',', '.' }}"
+                                                        {%- else -%}
+                                                        placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                        {% endif %}
+                                                        min="0"
+                                                        {%- if uses_comma_decimals -%}
+                                                        max="{{ filter.range_max | money_without_currency| replace: '.', ''  | replace: ',', '.' }}"
+                                                        {%- else -%}
+                                                        max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                        {% endif %}
+                                                        >
+                                                        </input>
+                                                    </div>
+                                            </price-range>
+                                            <div class="beae-collection-filters--price-range">
+                                                <div class="beae-collection-filters--prices">
+                                                    {%- assign max_price = filter.max_value.value -%}
+                                                    {%- unless max_price -%}
+                                                        {%- assign max_price = filter.range_max -%}
+                                                    {%- endunless -%}
+                                                    {%- assign min_price = filter.min_value.value -%}
+                                                    {%- unless min_price -%}
+                                                        {%- assign min_price = 0 -%}
+                                                    {%- endunless -%}
+                                                    <span class="beae-collection-filters--price-from">{{ min_price  | money }}</span><span>-</span>
+                                                    <span class="beae-collection-filters--price-to">{{ max_price | money }}</span>
+                                                </div>
+                                                {%- assign per_min = 0 -%}
+                                                {%- assign per_max = 100 -%}
+                                                {%- if filter.min_value.value -%}
+                                                    {%- assign per_min = filter.min_value.value | times: 1.00 | divided_by: filter.range_max | times: 100 -%}
+                                                {%- endif -%}
+                                                {%- if filter.max_value.value -%}
+                                                    {%- assign per_max = filter.max_value.value | times: 1.00 | divided_by: filter.range_max | times: 100 -%}
+                                                {%- endif -%}
+                                                <div class="beae-collection-filters--multi-range">
+                                                    <input aria-label="input" class="beae-collection-filters--input-min" type="range" min="0" max="100" value="{{per_min}}" step="0.01" />
+                                                    <input aria-label="input" class="beae-collection-filters--input-max" type="range" min="0" max="100" value="{{per_max}}" step="0.01" />
+                                                    <span class="beae-collection-filters--multi-range--active"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </details>
+                                {% endcase %}
+                            {%- endfor -%}
+                            </div>
+                            
+                        {% schema %}
+                        {
+                        "name": "Beae Filters",
+                        "settings": []
+                        }
+                    {% endschema %}
+                
