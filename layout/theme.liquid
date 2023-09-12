@@ -258,14 +258,7 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-    <link
-      rel="preload"
-      href="https://mihomez.com/wpm@b13c7215wdd28e49cpfc97f3d0m364e80e8/web-pixel-shopify-app-pixel@0559/sandbox/worker.modern.js"
-      as="script"
-    >
-
-    <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
