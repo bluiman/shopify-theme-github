@@ -259,8 +259,11 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-  
-      
+  if (Shopify && Shopify.designMode) {
+    document.documentElement.classList.add('shopify-design-mode');
+} else {
+    document.documentElement.classList.remove('shopify-design-mode');
+}   
     </script>
   </head>
 
