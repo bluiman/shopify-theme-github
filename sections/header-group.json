@@ -1,1 +1,56 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"050c692b-cec8-44b6-8efb-250dbda327a6":{"type":"announcement","disabled":true,"settings":{"text":"Free Shipping🚛 WORLDWIDE🌎","text_alignment":"center","color_scheme":"accent-2","link":"shopify:\/\/collections\/all"}},"8670472c-07a5-4f3d-92f2-b21da46d7de6":{"type":"announcement","settings":{"text":"Experience the delight of no-cost shipping for every item","text_alignment":"center","color_scheme":"accent-2","link":"shopify:\/\/collections\/all"}}},"block_order":["050c692b-cec8-44b6-8efb-250dbda327a6","8670472c-07a5-4f3d-92f2-b21da46d7de6"],"settings":{}},"header":{"type":"header","settings":{"logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"background-1","enable_country_selector":true,"enable_language_selector":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}}},"order":["announcement-bar","header"]}
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "050c692b-cec8-44b6-8efb-250dbda327a6": {
+          "type": "announcement",
+          "settings": {
+            "text": "Limited-Time Offer: Get 10% Off and FREE SHIPPING  on Every Single Item - Shop Now!",
+            "text_alignment": "center",
+            "color_scheme": "accent-2",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "8670472c-07a5-4f3d-92f2-b21da46d7de6": {
+          "type": "announcement",
+          "settings": {
+            "text": "Experience the delight of no-cost shipping for every item",
+            "text_alignment": "center",
+            "color_scheme": "accent-2",
+            "link": "shopify:\/\/collections\/all"
+          }
+        }
+      },
+      "block_order": [
+        "050c692b-cec8-44b6-8efb-250dbda327a6",
+        "8670472c-07a5-4f3d-92f2-b21da46d7de6"
+      ],
+      "settings": {
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "background-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}
