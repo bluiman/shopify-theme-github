@@ -210,3 +210,43 @@ if (!customElements.get('cart-note')) {
       }
   });
 };
+//
+
+if (!customElements.get('cart-note')) {
+  customElements.define('cart-note', class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, { ...fetchConfig(), ...{ body } });
+      }, ON_CHANGE_DEBOUNCE_TIMER))
+    }
+  });
+};
+
+// 添加Stripe Elements
+class StripePaymentElement extends HTMLElement {
+  constructor() {
+    super();
+
+    // 设置Stripe的public key
+    this.stripe = Stripe('pk_test_51NSwCCL5c3obtYmrg1wc8gB8ntSi9dVEwHSxErYdj2QbZthB84um1FdAjYeLPYm6tEV15rU5PWXqcoyelBeQVwxi00QMhl6y2v');
+
+    // 这里可以进一步配置Stripe Elements的外观和选项
+    const appearance = { /* appearance */ };
+    const options = { /* options */ };
+    this.elements = this.stripe.elements({ appearance });
+    this.paymentElement = this.elements.create('payment', options);
+  }
+
+  connectedCallback() {
+    const paymentElementDiv = document.createElement('div');
+    paymentElementDiv.setAttribute('id', 'payment-element');
+    this.appendChild(paymentElementDiv);
+    this.paymentElement.mount('#payment-element');
+  }
+}
+
+customElements.define('stripe-payment-element', StripePaymentElement);
+
