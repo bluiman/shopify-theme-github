@@ -39,24 +39,24 @@
     "fullField": false
   },
   "breadcrumb": {
-    "turnOn": true,
-    "fullField": true
+    "turnOn": false,
+    "fullField": false
   },
   "howTo": {
     "turnOn": false,
     "fullField": false
   },
   "siteLink": {
-    "turnOn": true,
-    "fullField": true
+    "turnOn": false,
+    "fullField": false
   },
   "product": {
-    "turnOn": true,
-    "fullField": true
+    "turnOn": false,
+    "fullField": false
   },
   "article": {
-    "turnOn": true,
-    "fullField": true
+    "turnOn": false,
+    "fullField": false
   },
   "faq": {
     "turnOn": false,
