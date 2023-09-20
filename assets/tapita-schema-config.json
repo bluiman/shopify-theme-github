@@ -39,16 +39,16 @@
     "fullField": false
   },
   "breadcrumb": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "howTo": {
     "turnOn": false,
     "fullField": false
   },
   "siteLink": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "product": {
     "turnOn": true,
