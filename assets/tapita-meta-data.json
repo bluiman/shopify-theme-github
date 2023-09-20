@@ -1,0 +1,24 @@
+{
+  "metaData": {
+    "products": {
+      "title": "",
+      "description": "",
+      "turnOn": "",
+      "overwrite": ""
+    },
+    "collections": {
+      "title": "",
+      "description": "",
+      "turnOn": "",
+      "overwrite": ""
+    },
+    "articles": {
+      "title": "",
+      "description": "",
+      "turnOn": "",
+      "overwrite": ""
+    }
+  },
+  "pageSpeedConfig": false,
+  "instantPage": true
+}
