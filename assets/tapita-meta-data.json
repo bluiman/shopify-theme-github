@@ -39,7 +39,7 @@
       }
     },
     "turnOnObject": {
-      "products": true,
+      "products": false,
       "collections": true,
       "articles": true
     }
