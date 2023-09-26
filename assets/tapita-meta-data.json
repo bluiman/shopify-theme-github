@@ -1,24 +1,49 @@
 {
   "metaData": {
     "products": {
-      "title": "",
-      "description": "",
-      "turnOn": "",
-      "overwrite": ""
+      "meta_title_value": "product.title",
+      "meta_title_display": "@[ Product_name ](product.title)",
+      "meta_description_value": "At shop.name we offer product.title at the lowest price. Check it out now!",
+      "meta_description_display": "At @[ Store_name ](shop.name) we offer @[ Product_name ](product.title) at the lowest price. Check it out now!"
     },
     "collections": {
-      "title": "",
-      "description": "",
-      "turnOn": "",
-      "overwrite": ""
+      "meta_title_value": "collection.title",
+      "meta_title_display": "@[ Collection_name ](collection.title)",
+      "meta_description_value": "Explore our best collection of collection.title. ✓ Free Shipping ✓ Cash on Delivery ✓ Best Offers",
+      "meta_description_display": "Explore our best collection of @[ Collection_name ](collection.title). ✓ Free Shipping ✓ Cash on Delivery ✓ Best Offers"
     },
     "articles": {
-      "title": "",
-      "description": "",
-      "turnOn": "",
-      "overwrite": ""
+      "meta_title_value": "article.title",
+      "meta_title_display": "@[ Article_name ](article.title)",
+      "meta_description_value": "article.excerpt_or_content",
+      "meta_description_display": "@[ Excerpt_or_content ](article.excerpt_or_content)"
+    },
+    "en": {
+      "products": {
+        "meta_title_value": "Fast 4-In-1 Magnetic Wireless Charger with Atmosphere Light | Charge Airpods Pro, I-phone, Watch Instantly",
+        "meta_title_display": "Fast 4-In-1 Magnetic Wireless Charger with Atmosphere Light | Charge Airpods Pro, I-phone, Watch Instantly",
+        "meta_description_value": "Upgrade to seamless charging! Dive into swift power-up for your smartphone, Airpods Pro, I-phone watch, and more. Magnetic magic with ambiance lighting. Shop now!",
+        "meta_description_display": "Upgrade to seamless charging! Dive into swift power-up for your smartphone, Airpods Pro, I-phone watch, and more. Magnetic magic with ambiance lighting. Shop now!"
+      },
+      "collections": {
+        "meta_title_value": "collection.title",
+        "meta_title_display": "@[ Collection_name ](collection.title)",
+        "meta_description_value": "Explore our best collection of collection.title. ✓ Free Shipping ✓ Cash on Delivery ✓ Best Offers",
+        "meta_description_display": "Explore our best collection of @[ Collection_name ](collection.title). ✓ Free Shipping ✓ Cash on Delivery ✓ Best Offers"
+      },
+      "articles": {
+        "meta_title_value": "article.title",
+        "meta_title_display": "@[ Article_name ](article.title)",
+        "meta_description_value": "article.excerpt_or_content",
+        "meta_description_display": "@[ Excerpt_or_content ](article.excerpt_or_content)"
+      }
+    },
+    "turnOnObject": {
+      "products": true,
+      "collections": false,
+      "articles": false
     }
   },
-  "pageSpeedConfig": false,
+  "pageSpeedConfig": true,
   "instantPage": true
 }
