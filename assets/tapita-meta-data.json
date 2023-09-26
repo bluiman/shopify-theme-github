@@ -32,16 +32,16 @@
         "meta_description_display": "Explore our best collection of Elevate your lifestyle with our range of smart digital tools designed to simplify your daily tasks and enhance efficiency. From intelligent home solutions to advanced office gadgets, our innovative collection will redefine the way you live and work in the digital era.. ✓ Free Shipping ✓ Best Offers"
       },
       "articles": {
-        "meta_title_value": "article.title",
-        "meta_title_display": "@[ Article_name ](article.title)",
-        "meta_description_value": "article.excerpt_or_content",
-        "meta_description_display": "@[ Excerpt_or_content ](article.excerpt_or_content)"
+        "meta_title_value": " Discover the Future of Charging: The 4-in-1 Magnetic Wireless Charging Discover the Future of Charging: The 4-in-1 Magnetic Wireless Charging #Discover the Future of Charging: The 4-in-1 Magnetic Wireless ChargingDiscover the Future of Charging: The 4-in-1 Magnetic Wireless Charging…Discover the Future of Charging: The 4-in-1 Magnetic Wireless Charging",
+        "meta_title_display": " Discover the Future of Charging: The 4-in-1 Magnetic Wireless Charging Discover the Future of Charging: The 4-in-1 Magnetic Wireless Charging #Discover the Future of Charging: The 4-in-1 Magnetic Wireless ChargingDiscover the Future of Charging: The 4-in-1 Magnetic Wireless Charging…Discover the Future of Charging: The 4-in-1 Magnetic Wireless Charging",
+        "meta_description_value": "Discover the elegance of choice with our 2-Color Ultimate 4-in-1 Magnetic Wireless Charging Station. Designed for the modern Apple enthusiast, this sleek charger offers both style and efficiency. Dive into a world where fast charging meets aesthetic brilliance, and let your devices reflect your personal flair! ",
+        "meta_description_display": "Discover the elegance of choice with our 2-Color Ultimate 4-in-1 Magnetic Wireless Charging Station. Designed for the modern Apple enthusiast, this sleek charger offers both style and efficiency. Dive into a world where fast charging meets aesthetic brilliance, and let your devices reflect your personal flair! "
       }
     },
     "turnOnObject": {
       "products": true,
       "collections": true,
-      "articles": false
+      "articles": true
     }
   },
   "pageSpeedConfig": true,
