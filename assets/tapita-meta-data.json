@@ -26,10 +26,10 @@
         "meta_description_display": "Upgrade to seamless charging! Dive into swift power-up for your smartphone, Airpods Pro, I-phone watch, and more. Magnetic magic with ambiance lighting. Shop now!"
       },
       "collections": {
-        "meta_title_value": "collection.title",
-        "meta_title_display": "@[ Collection_name ](collection.title)",
-        "meta_description_value": "Explore our best collection of collection.title. ✓ Free Shipping ✓ Cash on Delivery ✓ Best Offers",
-        "meta_description_display": "Explore our best collection of @[ Collection_name ](collection.title). ✓ Free Shipping ✓ Cash on Delivery ✓ Best Offers"
+        "meta_title_value": "Enhance Your Life with Smart Digital Tools: Innovative Solutions for Modern Living",
+        "meta_title_display": "Enhance Your Life with Smart Digital Tools: Innovative Solutions for Modern Living",
+        "meta_description_value": "Explore our best collection of Elevate your lifestyle with our range of smart digital tools designed to simplify your daily tasks and enhance efficiency. From intelligent home solutions to advanced office gadgets, our innovative collection will redefine the way you live and work in the digital era.. ✓ Free Shipping ✓ Best Offers",
+        "meta_description_display": "Explore our best collection of Elevate your lifestyle with our range of smart digital tools designed to simplify your daily tasks and enhance efficiency. From intelligent home solutions to advanced office gadgets, our innovative collection will redefine the way you live and work in the digital era.. ✓ Free Shipping ✓ Best Offers"
       },
       "articles": {
         "meta_title_value": "article.title",
@@ -40,7 +40,7 @@
     },
     "turnOnObject": {
       "products": true,
-      "collections": false,
+      "collections": true,
       "articles": false
     }
   },
