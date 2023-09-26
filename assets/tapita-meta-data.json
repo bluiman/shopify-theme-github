@@ -40,8 +40,8 @@
     },
     "turnOnObject": {
       "products": false,
-      "collections": true,
-      "articles": true
+      "collections": false,
+      "articles": false
     }
   },
   "pageSpeedConfig": true,
