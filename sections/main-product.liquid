@@ -71,7 +71,59 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when '@app' -%}
-              {% render block %}
+              {% capture t %}{% render block %}{% endcapture %}
+            {% assign htmlStr = t %}
+{% assign imgStarter = "<img" %}
+
+{% assign skipFirst = true %}
+{% assign prefixHtml = htmlStr | slice: 0, imgStarter.size  %}
+
+{% if prefixHtml == imgStarter %}
+  {% assign skipFirst = false %}
+{% endif %}
+
+{% assign firstImgDivision = htmlStr | split: imgStarter %}
+
+{% assign fullPack = "" %}
+
+{% for piece in firstImgDivision %}
+  {% if forloop.first and skipFirst %}
+    {% assign fullPack = fullPack | append: piece %}
+    {% continue %}
+  {% endif %}
+
+  {% assign copyOfPiece = piece %}
+  
+  {% assign imageEndDivision = copyOfPiece | split: ">" %}
+  {% assign contentText = imageEndDivision[0] %}
+  {% assign replaceText = contentText %}
+
+  {% assign additionalElement = ' alt="' | append: shop.name | append: '" '  %}
+          
+  {% unless contentText contains "alt=" %}
+    {% assign replaceText = contentText | append: additionalElement %}
+  {% else %}
+    {% if  contentText contains 'alt=""'%}
+      {% assign replaceText = contentText | replace: 'alt=""', additionalElement %}
+    {% endif %}
+  {% endunless %}
+
+  {% assign changedText ="" %}
+  {% if contentText %}
+    {% assign changedText = copyOfPiece | replace_first: contentText, replaceText %}
+  {% else %}
+    {% assign changedText = copyOfPiece  %}
+  {% endif %}
+  
+  {% if forloop.first %}
+    {% assign fullPack = fullPack | append: changedText %}
+  {% else %}
+    {% assign fullPack = fullPack | append: imgStarter | append: changedText %}
+  {% endif %}
+      
+{% endfor %}
+
+{{ fullPack }}
             {%- when 'text' -%}
               <p
                 class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
