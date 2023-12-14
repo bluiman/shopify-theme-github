@@ -55,7 +55,7 @@
     "fullField": true
   },
   "article": {
-    "turnOn": false,
+    "turnOn": true,
     "fullField": true
   },
   "faq": {
