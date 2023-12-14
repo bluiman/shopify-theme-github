@@ -43,31 +43,31 @@
     "fullField": false
   },
   "howTo": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "siteLink": {
     "turnOn": true,
     "fullField": true
   },
   "product": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "article": {
     "turnOn": false,
-    "fullField": false
+    "fullField": true
   },
   "faq": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "recipe": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "video": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   }
 }
