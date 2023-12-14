@@ -39,8 +39,8 @@
     "fullField": false
   },
   "breadcrumb": {
-    "turnOn": false,
-    "fullField": false
+    "turnOn": true,
+    "fullField": true
   },
   "howTo": {
     "turnOn": true,
