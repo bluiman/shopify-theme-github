@@ -36,7 +36,10 @@
   },
   "logo": {
     "turnOn": false,
-    "fullField": false
+    "fullField": true,
+    "imageUrl": [
+      "https:\/\/tapita.io\/pb\/pub\/media\/spb\/usr\/8739\/wysiwyg\/76911608113\/LOGO_MIHOMEZ_NO_BACKGROUND.png"
+    ]
   },
   "breadcrumb": {
     "turnOn": true,
