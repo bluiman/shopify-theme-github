@@ -1,12 +1,21 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
-
   <head>
- <!-- Added by TAPITA SEO SCHEMA-->
-{% if content_for_header contains 'tapita-seo-script-tags' %}
-  {% include 'tapita-seo-schema' %}
-{% endif %}
-<!-- /Added by TAPITA SEO SCHEMA --> 
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T5P84BJ4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Added by TAPITA SEO SCHEMA -->
+    {% if content_for_header contains 'tapita-seo-script-tags' %}
+      {% include 'tapita-seo-schema' %}
+    {% endif %}
+    <!-- /Added by TAPITA SEO SCHEMA -->
 
     <!-- Meta Pixel Code -->
     <script>
@@ -56,7 +65,7 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags', page_description: page_description, page_title: page_title  %}
+    {% render 'meta-tags', page_description: page_description, page_title: page_title %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -264,19 +273,29 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-  <script>
-if (Shopify && Shopify.designMode) {
-    document.documentElement.classList.add('shopify-design-mode');
-} else {
-    document.documentElement.classList.remove('shopify-design-mode');
-}
-</script>
+    <script>
+      if (Shopify && Shopify.designMode) {
+          document.documentElement.classList.add('shopify-design-mode');
+      } else {
+          document.documentElement.classList.remove('shopify-design-mode');
+      }
+    </script>
 
     <script src="https://js.stripe.com/v3/"></script>
-
-</head>
+  </head>
 
   <body class="gradient">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T5P84BJ4"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -333,13 +352,6 @@ if (Shopify && Shopify.designMode) {
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       }
-
-
-
-
-
-
-
     </script>
 
     {%- if settings.predictive_search_enabled -%}
