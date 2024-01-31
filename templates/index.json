@@ -140,8 +140,8 @@
     "2bd675b1-6ec7-45ad-92a4-ca5055074653": {
       "type": "featured-blog",
       "settings": {
-        "heading": "About",
-        "heading_size": "h2",
+        "heading": "<em><strong>MiHomez - Your Home Decor Experts.<\/strong><\/em>",
+        "heading_size": "h1",
         "blog": "news",
         "post_limit": 3,
         "columns_desktop": 3,
