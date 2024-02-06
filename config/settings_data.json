@@ -153,15 +153,6 @@
         "settings": {
         }
       },
-      "9945917646655616230": {
-        "type": "shopify:\/\/apps\/variant-description-omg\/blocks\/app-embed\/dee11698-5b0b-4a0f-9562-ea29cbe9c77e",
-        "disabled": false,
-        "settings": {
-          "show_product_description": true,
-          "product_description_selector": "",
-          "custom_liquid": ""
-        }
-      },
       "12120936241911852800": {
         "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/reviews_tab\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
